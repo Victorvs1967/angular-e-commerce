@@ -1,0 +1,9 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  &-content {
+    margin: 0 auto;
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+}

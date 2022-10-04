@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+  margin: 0 auto 0;
+  padding: 4rem 0 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card {
+  max-width: 80%;
+  background: #fff;
+  color: #000;
+  &-subtitle {
+    color: #262626
+  }
+  &-image {
+    width: 100%;
+    margin: 2rem;
+    margin-right: 4rem;
+  }
+}
+
+.mat-card-content {
+  padding: 2rem;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.product-header-image {
+  background: url('/assets/images/apple.jpeg') center no-repeat;
+  background-size: cover;
+}

@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://angular-e-commerce-vs-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+  storageBucket: 'gs://angular-e-commerce-vs.appspot.com',
 };
 
 /*

@@ -1,0 +1,24 @@
+<mat-toolbar class="header no-select" color="primary">
+  <button mat-icon-button class="header-menu_icon" aria-label="menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-button routerLink="">
+    <span class="logo">E-Commerce</span>
+  </button>
+  <span class="spacer"></span>
+  <div class="header-menu no-select">
+    <button mat-button class="menu-item" routerLink="">Basic</button>
+    <button mat-button class="menu-item" routerLink="products">Products</button>
+    <button mat-button class="menu-item" [routerLink]="['products', 1]" *ngIf="isAdmin">Add Product</button>
+  </div>
+  <button mat-icon-button class="header-menu_icon" aria-label="menu icon" routerLink="basket">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+  <button mat-icon-button class="header-menu_icon" aria-label="menu icon" (click)="login()" *ngIf="!isAdmin">
+    <mat-icon>login</mat-icon>
+  </button>
+  <button mat-icon-button class="header-menu_icon" aria-label="menu icon" (click)="logout()" *ngIf="isAdmin">
+    <mat-icon>logout</mat-icon>
+  </button>
+
+</mat-toolbar>

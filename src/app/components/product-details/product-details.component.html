@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-card class="product-card" *ngIf="product">
+    <mat-card-header>
+      <div mat-card-avatar class="product-header-image"></div>
+      <mat-card-title>{{ product.title }}&nbsp;{{ product.year }}</mat-card-title>
+      <mat-card-subtitle class="product-card-subtitle">{{ product.price | currency }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <img mat-card-xl-image class="product-card-image" *ngIf="product.image?.includes('https')" src="{{ product.image }}" alt="{{ product.title }}">
+      <div class="content-text">
+        <p>
+          <strong>Chip:</strong> {{ product.configure.chip }};&nbsp;
+          <strong>Memory:</strong> {{ product.configure.memory }};&nbsp;
+          <strong>SSD:</strong> {{ product.configure.SSD }}
+        </p>
+        <p>{{ product.description }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-icon-button matTooltip="Add to basket" matTooltipPosition="above" routerLink="/basket"><mat-icon>add_shopping_cart</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>
