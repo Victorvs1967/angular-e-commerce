@@ -1,1 +1,24 @@
-<p>dilog-box works!</p>
+<form class="add-form" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Add Product&nbsp;&nbsp;{{ product.title }}</h1>
+  <div mat-dialog-content>
+    <p>Add Product</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input matInput [(ngModel)]="product.title" name="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Price</mat-label>
+      <input matInput [(ngModel)]="product.price" name="price">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Description</mat-label>
+      <textarea matInput [(ngModel)]="product.description" name="description"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <div class="btn-group">
+      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button mat-button [mat-dialog-close]="product" cdkFocusInitial>Ok</button>
+    </div>
+  </div>
+</form>

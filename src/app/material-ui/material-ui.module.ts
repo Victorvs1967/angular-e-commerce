@@ -5,6 +5,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule}  from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const MATERIAL_UI_COMPONENTS = [
   MatIconModule,
@@ -12,6 +16,10 @@ const MATERIAL_UI_COMPONENTS = [
   MatToolbarModule,
   MatCardModule,
   MatTooltipModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDialogModule,
 ];
 
 @NgModule({

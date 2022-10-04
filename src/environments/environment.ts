@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://angular-e-commerce-vs-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+  databaseUrl: 'https://angular-e-commerce-vs-default-rtdb.europe-west1.firebasedatabase.app',
   storageBucket: 'gs://angular-e-commerce-vs.appspot.com',
 };
 

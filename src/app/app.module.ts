@@ -13,6 +13,7 @@ import { BasketComponent } from './components/basket/basket.component';
 import { BaseComponent } from './components/base/base.component';
 import { DilogBoxComponent } from './components/dilog-box/dilog-box.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialUiModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
