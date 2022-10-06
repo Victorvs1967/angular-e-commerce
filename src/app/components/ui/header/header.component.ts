@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Config, Product } from 'src/app/models/product.model';
+import { Product } from 'src/app/models/product.model';
+import { ProductsService } from 'src/app/services/products.service';
 import { DilogBoxComponent } from '../../dilog-box/dilog-box.component';
 
 @Component({
@@ -13,38 +14,20 @@ export class HeaderComponent implements OnInit {
   isAdmin = false;
   product?: Product;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public productsService: ProductsService, public dialog: MatDialog) { }
 
   openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '50%';
-    dialogConfig.data = {};
-
-    // {
-    //   id: 100,
-    //   title: 'iPhone 14 Pro',
-    //   price: 1000,
-    //   year: '2022',
-    //   image: '',
-    //   description: 'iPhone 14 Pro good device...',
-    //   configure: {
-    //     chip: 'A17',
-    //     memory: '256 GB',
-    //     SSD: '',
-    //   }
-    // };
-
+    dialogConfig.disableClose = true;
     const dialogRef = this.dialog.open(DilogBoxComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((data: Product) => {
       console.log('The dialog was closed');
+      this.product = data;
+      this.product.image = data.image ? data.image : 'apple.jpeg';
+      this.productsService.addProduct(this.product);
       
-      this.product = result;
-      this.product!.id = 100;
-      this.product!.year = '2022';
-      this.product!.configure = {chip: 'A17', memory: '256 GB', SSD: ''};
-
-      console.log(this.product);
     });
   }
 

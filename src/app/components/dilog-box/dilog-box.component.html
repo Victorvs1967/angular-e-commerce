@@ -1,24 +1,45 @@
-<form class="add-form" (ngSubmit)="onSubmit()">
-  <h1 mat-dialog-title>Add Product&nbsp;&nbsp;{{ product.title }}</h1>
+<form [formGroup]="prodForm" class="add-form" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Add Product</h1>
   <div mat-dialog-content>
-    <p>Add Product</p>
     <mat-form-field appearance="fill">
       <mat-label>Product Name</mat-label>
-      <input matInput [(ngModel)]="product.title" name="title">
+      <input matInput formControlName="title" placeholder="Enter title...">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Product Price</mat-label>
-      <input matInput [(ngModel)]="product.price" name="price">
+      <input matInput formControlName="price" placeholder="Enter price...">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Year</mat-label>
+      <input matInput formControlName="year" placeholder="Enter year...">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Image</mat-label>
+      <input matInput formControlName="image" placeholder="Enter image...">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Product Description</mat-label>
-      <textarea matInput [(ngModel)]="product.description" name="description"></textarea>
+      <textarea matInput formControlName="description" placeholder="Enter description..."></textarea>
     </mat-form-field>
+    <div class="field-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Product Chip</mat-label>
+        <input matInput formControlName="chip" placeholder="Enter chip...">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Product Memory</mat-label>
+        <input matInput formControlName="memory" placeholder="Enter mempry...">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Product SSD</mat-label>
+        <input matInput formControlName="ssd" placeholder="Enter SSD...">
+      </mat-form-field>
+    </div>
   </div>
   <div mat-dialog-actions>
     <div class="btn-group">
       <button mat-button (click)="onNoClick()">No Thanks</button>
-      <button mat-button [mat-dialog-close]="product" cdkFocusInitial>Ok</button>
+      <button mat-button [mat-dialog-close]="product" type="submit" cdkFocusInitial>Ok</button>
     </div>
   </div>
 </form>

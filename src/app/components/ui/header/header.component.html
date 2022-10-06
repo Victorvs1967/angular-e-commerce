@@ -1,5 +1,5 @@
 <mat-toolbar class="header no-select" color="primary">
-  <button mat-icon-button class="header-menu_icon" aria-label="menu icon">
+  <button mat-icon-button class="header-menu_icon" matTooltip="Main menu" matTooltipPosition="above" aria-label="menu icon">
     <mat-icon>menu</mat-icon>
   </button>
   <button mat-button routerLink="">
@@ -7,17 +7,17 @@
   </button>
   <span class="spacer"></span>
   <div class="header-menu no-select">
-    <button mat-button class="menu-item" routerLink="">Basic</button>
-    <button mat-button class="menu-item" routerLink="products">Products</button>
-    <button mat-button class="menu-item" (click)="openDialog()" *ngIf="isAdmin">Add Product</button>
+    <button mat-button class="menu-item" matTooltip="Main page" matTooltipPosition="above" routerLink="">Basic</button>
+    <button mat-button class="menu-item" matTooltip="Products list" matTooltipPosition="above" routerLink="products">Products</button>
+    <button mat-button class="menu-item" matTooltip="Add new product" matTooltipPosition="above" (click)="openDialog()" *ngIf="isAdmin">Add Product</button>
   </div>
-  <button mat-icon-button class="header-menu_icon" aria-label="menu icon" routerLink="basket">
+  <button mat-icon-button class="header-menu_icon" matTooltip="Products busket" matTooltipPosition="above" aria-label="menu icon" routerLink="basket">
     <mat-icon>shopping_cart</mat-icon>
   </button>
-  <button mat-icon-button class="header-menu_icon" aria-label="menu icon" (click)="login()" *ngIf="!isAdmin">
+  <button mat-icon-button class="header-menu_icon"  matTooltip="Login" matTooltipPosition="above"aria-label="menu icon" (click)="login()" *ngIf="!isAdmin">
     <mat-icon>login</mat-icon>
   </button>
-  <button mat-icon-button class="header-menu_icon" aria-label="menu icon" (click)="logout()" *ngIf="isAdmin">
+  <button mat-icon-button class="header-menu_icon" matTooltip="Logout" matTooltipPosition="above" aria-label="menu icon" (click)="logout()" *ngIf="isAdmin">
     <mat-icon>logout</mat-icon>
   </button>
 

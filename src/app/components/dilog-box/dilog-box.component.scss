@@ -4,7 +4,13 @@
 .mat-form-field {
   width: 100%;
 }
-
+.field-group {
+  display: flex;
+  justify-content: space-between;
+  .mat-form-field {
+    max-width: 30%;
+  }
+}
 .btn-group {
   margin-left: auto;
 }

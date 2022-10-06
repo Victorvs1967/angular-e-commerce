@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'src/app/models/product.model';
 
@@ -9,7 +10,19 @@ import { Product } from 'src/app/models/product.model';
 })
 export class DilogBoxComponent implements OnInit {
 
+  prodForm: FormGroup;
+
   constructor(public dialogRef: MatDialogRef<DilogBoxComponent>, @Inject(MAT_DIALOG_DATA) public product: Product) {
+    this.prodForm = new FormGroup({
+      title: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required),
+      year: new FormControl('',),
+      image: new FormControl('',),
+      description: new FormControl('',),
+      chip: new FormControl('',),
+      memory: new FormControl('',),
+      ssd: new FormControl('',),
+    });
   }
 
   onNoClick(): void {
@@ -17,7 +30,25 @@ export class DilogBoxComponent implements OnInit {
   }
   
   onSubmit() {
-    console.log(this.product);
+    const id = Math.floor(Math.random() * 1000);
+    const { title, price, year, image, description, chip, memory, ssd } = this.prodForm.value;
+
+    const configure = {
+      chip,
+      memory,
+      SSD: ssd,
+    };
+
+    const product: Product = {
+      id,
+      title,
+      price,
+      year,
+      image,
+      description,
+      configure,
+    };
+    this.dialogRef.close(product);
   }
 
   ngOnInit(): void {

@@ -6,7 +6,7 @@
       <mat-card-subtitle class="product-card-subtitle">{{ product.price | currency }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <img mat-card-xl-image class="product-card-image" *ngIf="product.image?.includes('https')" src="{{ product.image }}" alt="{{ product.title }}">
+      <img mat-card-xl-image class="product-card-image" *ngIf="product.image && product.image.includes('https')" src="{{ product.image }}" alt="{{ product.title }}">
       <div class="content-text">
         <p>
           <strong>Chip:</strong> {{ product.configure.chip }};&nbsp;

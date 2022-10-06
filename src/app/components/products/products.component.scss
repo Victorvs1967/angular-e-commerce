@@ -3,13 +3,13 @@
   padding: 4rem 4rem 10rem;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .product-card {
-  max-width: 35rem;
+  width:30%;
+  padding-bottom: 4rem;
   background: #fff;
   color: #000;
   &-subtitle {
@@ -24,4 +24,10 @@
 .product-header-image {
   background: url('/assets/images/apple.jpeg') center no-repeat;
   background-size: cover;
+}
+
+.mat-card-actions {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
 }
