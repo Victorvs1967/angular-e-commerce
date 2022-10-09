@@ -1,20 +1,28 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+// graphics
 import { MatIconModule}  from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule}  from '@angular/material/card';
+
+// common
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
-const MATERIAL_UI_COMPONENTS = [
+const common = [
   MatIconModule,
   MatButtonModule,
   MatToolbarModule,
   MatCardModule,
+  MatMenuModule,
+];
+
+const graphics = [
   MatTooltipModule,
   MatDividerModule,
   MatFormFieldModule,
@@ -22,8 +30,13 @@ const MATERIAL_UI_COMPONENTS = [
   MatDialogModule,
 ];
 
+const MATERIAL_UI_COMPONENTS = [
+  ...common,
+  ...graphics,
+];
+
 @NgModule({
-  imports: [ CommonModule, ...MATERIAL_UI_COMPONENTS ],
+  imports: [ ...MATERIAL_UI_COMPONENTS ],
   exports: [ ...MATERIAL_UI_COMPONENTS ],
 })
 export class MaterialUiModule { }

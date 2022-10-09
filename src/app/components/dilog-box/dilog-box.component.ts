@@ -14,14 +14,14 @@ export class DilogBoxComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DilogBoxComponent>, @Inject(MAT_DIALOG_DATA) public product: Product) {
     this.prodForm = new FormGroup({
-      title: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required),
-      year: new FormControl('',),
+      title: new FormControl(this.product ? this.product.title : '', Validators.required),
+      price: new FormControl(this.product ? this.product.price : '', Validators.required),
+      year: new FormControl(this.product ? this.product.year : '',),
       image: new FormControl('',),
-      description: new FormControl('',),
-      chip: new FormControl('',),
-      memory: new FormControl('',),
-      ssd: new FormControl('',),
+      description: new FormControl(this.product ? this.product.description : '',),
+      chip: new FormControl(this.product ? this.product.configure.chip : '',),
+      memory: new FormControl(this.product ? this.product.configure.memory : '',),
+      ssd: new FormControl(this.product ? this.product.configure.SSD : '',),
     });
   }
 
@@ -30,8 +30,8 @@ export class DilogBoxComponent implements OnInit {
   }
   
   onSubmit() {
-    const id = Math.floor(Math.random() * 1000);
     const { title, price, year, image, description, chip, memory, ssd } = this.prodForm.value;
+    const id = this.product ? this.product.id : '';
 
     const configure = {
       chip,
@@ -48,6 +48,7 @@ export class DilogBoxComponent implements OnInit {
       description,
       configure,
     };
+
     this.dialogRef.close(product);
   }
 

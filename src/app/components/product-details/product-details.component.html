@@ -17,7 +17,12 @@
       </div>
     </mat-card-content>
     <mat-card-actions align="end">
+      <button mat-icon-button matTooltip="Edit/remove product" matTooltipPosition="above" [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
       <button mat-icon-button matTooltip="Add to basket" matTooltipPosition="above" routerLink="/basket"><mat-icon>add_shopping_cart</mat-icon></button>
     </mat-card-actions>
   </mat-card>
+  <mat-menu #menu="matMenu" yPosition="above">
+    <button mat-menu-item *ngIf="product" (click)="editProduct(product)">Edit</button>
+    <button mat-menu-item *ngIf="product" (click)="removeProduct(product)">Remove</button>
+  </mat-menu>
 </div>

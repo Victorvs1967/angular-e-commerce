@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { environment } from 'src/environments/environment';
-import { Database, DatabaseReference, get, getDatabase, ref as dbRef, set } from "firebase/database";
+import { Database, DatabaseReference, get, getDatabase, push, ref as dbRef, remove, set } from "firebase/database";
 import { FirebaseStorage, getDownloadURL, getStorage, ref } from "firebase/storage";
 import { Product } from '../models/product.model';
 
@@ -40,7 +40,7 @@ export class ProductsService {
     );
   }
 
-  getProduct(id: number): Promise<Product> {
+  getProduct(id: string): Promise<Product> {
     return get(this.productsListRef).then((data: any) => data.toJSON())
       .then((products: any) => {
         getDownloadURL(ref(this.storage, `images/${products[id].image}`)).then(url => products[id].image = url)
@@ -50,7 +50,22 @@ export class ProductsService {
   }
   
   addProduct(product: Product): Promise<void> {
-    return set(dbRef(this.db, `products/${product.id}`), product)
-      .then(() => console.log(product, 'save successfully...'));
+    const productsRef = dbRef(this.db, 'products');
+    const productRef = push(productsRef);
+    const newProduct = product;
+    newProduct.id = productRef.key ?? '';
+    return set(productRef, newProduct)
+      .then(() => console.log(newProduct, 'add successfully...'))
   }
+
+  saveProduct(product: Product): Promise<void> {
+    return set(dbRef(this.db, `products/${product.id}`), product)
+      .then(() => console.log(product, 'save successfully...'))
+  }
+  
+  deleteProduct(product: Product): Promise<void> {
+    return remove(dbRef(this.db, `products/${product.id}`))
+      .then(() => console.log('delete successfully...'));
+  }
+
 }

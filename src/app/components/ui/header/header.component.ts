@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { DilogBoxComponent } from '../../dilog-box/dilog-box.component';
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   isAdmin = false;
   product?: Product;
 
-  constructor(public productsService: ProductsService, public dialog: MatDialog) { }
+  constructor(public productsService: ProductsService, public dialog: MatDialog, private router: Router) { }
 
   openDialog(): void {
     const dialogConfig = new MatDialogConfig();
@@ -26,8 +27,8 @@ export class HeaderComponent implements OnInit {
       console.log('The dialog was closed');
       this.product = data;
       this.product.image = data.image ? data.image : 'apple.jpeg';
-      this.productsService.addProduct(this.product);
-      
+      this.productsService.addProduct(this.product)
+        .then(() => this.router.navigate([`products/${this.product?.id}`]));      
     });
   }
 
