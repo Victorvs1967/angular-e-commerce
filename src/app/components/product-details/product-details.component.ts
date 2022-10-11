@@ -25,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.data.subscribe((data: any) => this.product = data.product);
   }
 
-  editProduct(product: Product) {
+  editProduct(product?: Product) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '50%';
     dialogConfig.disableClose = true;
@@ -34,10 +34,12 @@ export class ProductDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data: Product) => {
       console.log('The dialog was closed');
-      this.product = data;
-      this.product.image = data.image ? data.image : 'apple.jpeg';
-      this.productsService.saveProduct(this.product)
-      .then(() => this.router.navigate([`products`]));      
+      if (data) {
+        this.product = data;
+        this.product.image = data.image;
+        this.productsService.saveProduct(this.product)
+          .then(() => this.router.navigate([`products/${this.product?.id}`]));      
+      }
     });
   }
 

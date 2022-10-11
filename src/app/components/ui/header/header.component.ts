@@ -25,10 +25,12 @@ export class HeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data: Product) => {
       console.log('The dialog was closed');
-      this.product = data;
-      this.product.image = data.image ? data.image : 'apple.jpeg';
-      this.productsService.addProduct(this.product)
-        .then(() => this.router.navigate([`products/${this.product?.id}`]));      
+      if (data) {
+        this.product = data;
+        this.product.image = data.image ? data.image : 'apple.jpeg';
+        this.productsService.addProduct(this.product)
+          .then(() => this.router.navigate([`products/${this.product?.id}`]));              
+      }
     });
   }
 
