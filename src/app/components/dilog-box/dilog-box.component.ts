@@ -13,12 +13,11 @@ export class DilogBoxComponent implements OnInit {
   prodForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<DilogBoxComponent>, @Inject(MAT_DIALOG_DATA) public product: Product) {
-    const image = this.product ? this.product.image?.match(/%2F.+\?alt/)?.at(0) : '';
     this.prodForm = new FormGroup({
       title: new FormControl(this.product ? this.product.title : '', Validators.required),
       price: new FormControl(this.product ? this.product.price : '', Validators.required),
       year: new FormControl(this.product ? this.product.year : '',),
-      image: new FormControl(this.product ? image?.substring(3, image.length - 4) : '',),
+      image: new FormControl(this.product ? this.product.image?.match(/%2F.+\?alt/)?.at(0)?.slice(3, -4) : '',),
       description: new FormControl(this.product ? this.product.description : '',),
       chip: new FormControl(this.product ? this.product.configure.chip : '',),
       memory: new FormControl(this.product ? this.product.configure.memory : '',),

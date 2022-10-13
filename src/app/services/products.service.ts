@@ -55,12 +55,12 @@ export class ProductsService {
     const newProduct = product;
     newProduct.id = productRef.key ?? '';
     return set(productRef, newProduct)
-      .then(() => console.log(newProduct, 'add successfully...'))
+      .then(() => console.log(newProduct, 'add successfully...'));
   }
 
   saveProduct(product: Product): Promise<void> {
     return set(dbRef(this.db, `products/${product.id}`), product)
-      .then(() => console.log(product, 'save successfully...'))
+      .then(() => console.log(product, 'save successfully...'));
   }
   
   deleteProduct(product: Product): Promise<void> {
