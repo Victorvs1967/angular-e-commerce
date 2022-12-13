@@ -41,12 +41,15 @@ export class ProductsService {
   }
 
   getProduct(id: string): Promise<Product> {
-    return get(this.productsListRef).then((data: any) => data.toJSON())
-      .then((products: any) => {
-        getDownloadURL(ref(this.storage, `images/${products[id].image}`)).then(url => products[id].image = url)
-        return products[id];
-      },
-    ).catch(err => err);
+    return get(this.productsListRef)
+      .then((data: any) => data.toJSON())
+        .then((products: any) => {
+          getDownloadURL(ref(this.storage, `images/${products[id].image}`))
+            .then(url => products[id].image = url);
+            return products[id];
+          },
+        )
+      .catch(err => err);
   }
   
   addProduct(product: Product): Promise<void> {
